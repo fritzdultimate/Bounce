@@ -205,7 +205,7 @@ batton(h, g, s)
 
 let slide_val = +rag.value 
 function moveBatton() {
-    // let start = Date.now()
+    
     let val = +rag.value;
 
     let i = cx/100;
@@ -221,28 +221,8 @@ function moveBatton() {
         slide_val = val;
     }
 
-    batton(h, g, s)
-    // let stop = Date.now();
-    // let t = stop - start;
+    batton(h, g, s);
     
-}
-let pressTimer;
-// let node = document.getElementById("movebattonright");
-// let node2 = document.getElementById("movebattonleft");
-
-function buttonMoveBatton(e) {
-    let target = e.id;
-    i = cx/100;
-    ctx.clearRect(h-10, cy/2-100, cx, cy)
-    if(target == 'movebattonright') {
-        h = h + (i)*2;
-        g = g + (i)*2;
-        } else {
-            h = h - (i)*2;
-            g = g - (i)*2;
-        }
-
-        batton(h, g, s)
 }
 
 
@@ -280,9 +260,9 @@ function ball() {
     bouncer.update();
     bouncer.y += bouncer.dy;
     bouncer.x += bouncer.dx;
-    if(obstacles.length < obstacles_sum * 0.85 && ((bouncer.y + bouncer.radius) >= cy/2-200) ) {
+    if(obstacles.length < obstacles_sum * 0.75 && ((bouncer.y + bouncer.radius) >= cy/2-200) ) {
         /*
-            Add more block if player has eaten more than half of the blocks.
+            Add more block if player has eaten quater of the blocks.
             Add those blocks only if the bouncer is below the blocks.
         */
         reRenderObstacles(random(removed_obstackles.length-1, 0), (bouncer.y + bouncer.radius))
@@ -340,7 +320,7 @@ function ball() {
 
     if(bouncer.y + bouncer.radius <= 0) {
         /*
-            bounce up the ball when it hits the +y-axis
+            bounce down the ball when it hits the +y-axis <<<above
         */
         bouncer.dy = -bouncer.dy;
     }
